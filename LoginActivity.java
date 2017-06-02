@@ -190,12 +190,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         return true;
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
         return true;
     }
 
@@ -305,7 +303,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         @Override
         protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
             //var connString = "Server=ec2-184-73-199-72.compute-1.amazonaws.com;Port=5432;User Id=ipsjzpheswtzlh;Password=a5f4879460047281d282829f6e0b6fa4f0771722744aafaf627a4da8279127a8;Database=d9krqs4b40hebl;SSL Mode=Require;Trust Server Certificate=true";
 
             //sqlConnection conn = new sqlConnection(connString);
@@ -313,7 +310,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             try {
                 // Simulate network access.
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 Connection db = null;
                 try {
                     Class.forName("org.postgresql.Driver");
@@ -340,7 +337,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             } catch (InterruptedException e) {
                 return false;
             }
-            // TODO: register the new account here.
             return true;
         }
 
