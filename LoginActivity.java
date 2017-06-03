@@ -312,18 +312,25 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 // Simulate network access.
                 Thread.sleep(500);
                 Connection db = null;
+                System.out.println(mEmail);
+                System.out.println(mPassword);
                 try {
                     Class.forName("org.postgresql.Driver");
                     db = DriverManager.getConnection("jdbc:postgresql://ec2-184-73-199-72.compute-1.amazonaws.com:5432/d9krqs4b40hebl?ssl=true&sslmode=require&sslfactory=org.postgresql.ssl.NonValidatingFactory", "ipsjzpheswtzlh", "a5f4879460047281d282829f6e0b6fa4f0771722744aafaf627a4da8279127a8");
                     Statement st = db.createStatement();
-                    ResultSet lg = st.executeQuery("SELECT login,senha,id FROM tbusuario");
+                    ResultSet lg = st.executeQuery("SELECT login,senha,id FROM tbusuario where LOWER(login)=LOWER('"+mEmail+"')");
                     while (lg.next()){
                         String login = lg.getString("login");
                         String senha = lg.getString("senha");
+
                         int id = lg.getInt("id");
                         if (mEmail.equals(login) && mPassword.equals(senha))
                         {
                                 FKey = id;
+                        }
+                        else
+                        {
+                            return false;
                         }
                     }
                     db.close();
