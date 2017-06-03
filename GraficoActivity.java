@@ -1,6 +1,5 @@
 package br.com.gg.mypi;
 
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.AsyncTask;
@@ -13,7 +12,6 @@ import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.DefaultFillFormatter;
 
 import java.sql.Array;
 import java.sql.Connection;
@@ -44,7 +42,6 @@ public class GraficoActivity extends AppCompatActivity {
             ResultSet lg2;
             Statement st2;
             try {
-                //Thread.sleep(500);
                 Class.forName("org.postgresql.Driver");
                 db2 = DriverManager.getConnection("jdbc:postgresql://ec2-184-73-199-72.compute-1.amazonaws.com:5432/d9krqs4b40hebl?ssl=true&sslmode=require&sslfactory=org.postgresql.ssl.NonValidatingFactory", "ipsjzpheswtzlh", "a5f4879460047281d282829f6e0b6fa4f0771722744aafaf627a4da8279127a8");
                 st2 = db2.createStatement();
@@ -73,7 +70,6 @@ public class GraficoActivity extends AppCompatActivity {
                 String[] Datar1 = new String[10];
                     while (matcher.find())
                     {
-                        //System.out.println(matcher.group(1));
                         parts=matcher.group(1).split(",");
                         for (int k = 0; k < 10 ; k++) {
                             if(parts[k].toString() != null) {
@@ -126,7 +122,6 @@ public class GraficoActivity extends AppCompatActivity {
         leg.setTextSize(18f);
         lineChart.getDescription().setTextSize(48f);
         lineChart.getDescription().setText(Data[botao]);
-        //lineChart.setDescription(null);
         new LongOperation().execute("");
 
         Button botao1 = (Button)findViewById(R.id.button2);
